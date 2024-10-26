@@ -4,16 +4,19 @@
     <img src="https://github.com/user-attachments/assets/942375b2-9b00-4827-ab02-6fd6bfe0a080" alt="RealtimeWeather 1" style="width: 48%; margin-right: 1%;">
     <img src="https://github.com/user-attachments/assets/c0e3d16a-3e67-4d8b-8b3f-81eeacb7ade5" alt="RealtimeWeather 2" style="width: 48%;">
 </div>
+<div>
+    <br>
+</div>
 
-- This project is a Realtime Weather Application that provides live weather data along with daily prayer times.
-- This project is a Dynamic website.
-- The website features a user-friendly interface and updates weather and prayer data automatically every day.
+- This project is a `Realtime Weather Application` that provides live weather data along with `daily prayer times`.
+- This project is a <code>Dynamic website</code>.
+- The website features a user-friendly interface and updates weather and prayer `data automatically` every day.
 Below are the main sections of the website: 
 
 ---
 
 ## Live Demo 🌐
-- Check out the live demo of the project at [`Realtime Weather and Prayer Times Application`](https://omarrsakr.github.io/Realtime-Weather-and-Prayer-Times-APP/).
+- Check out the live demo of the project at [`Realtime Weather and Prayer Times APP`](https://omarrsakr.github.io/Realtime-Weather-and-Prayer-Times-APP/).
 
 ---
 
@@ -93,11 +96,11 @@ Data format used to handle information retrieved from APIs.
 ## 🔑 API Integration
 The application uses the following APIs:
 
-OpenWeather API:
+<code>OpenWeather API:</code>
 Retrieves current and forecast weather data.
 API endpoint: https://api.openweathermap.org/data/2.5/
 
-Prayer Times API:
+<code>Prayer Times API:</code>
 Provides accurate prayer times for a specific location.
 API endpoint: https://api.aladhan.com/v1/timings
 
@@ -105,17 +108,17 @@ API endpoint: https://api.aladhan.com/v1/timings
 
 ## How to Use 🚀  
 
-We welcome contributions to *Realtime Weather and Prayer Times Application*! Here’s how you can help:
+We welcome `contributions` to **Realtime Weather and Prayer Times Application**! Here’s how you can help:
 1. *Fork the repository* - Click the "Fork" button at the top right of the repository page.
 2. *Clone your fork* - Use the command:
    
-   bash
-   git clone https://github.com/OmarrSakr/Daniels-Website.git
+   ```bash
+   git clone https://github.com/OmarrSakr/Realtime-Weather-and-Prayer-Times-APP.git
 
 ---
 
 ## 📂 Project Structure 
-
+```
 📂 realtime-weather-prayer-times-app/
 │  
 ├── 📁 *assets/*
@@ -137,7 +140,7 @@ We welcome contributions to *Realtime Weather and Prayer Times Application*! Her
 ### 📌 Future Improvements
 
 - Add dark mode functionality for better usability at night.
-- Offline Mode: Save the latest data for offline viewing.
+- <code>Offline Mode</code>: Save the latest data for offline viewing.
 - Integrate animations for a smoother user experience.
  
 ---
