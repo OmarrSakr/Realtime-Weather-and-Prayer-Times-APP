@@ -139,9 +139,9 @@ We welcome `contributions` to **Realtime Weather and Prayer Times Application**!
 
 ### 📌 Future Improvements
 
-- Add dark mode functionality for better usability at night.
-- <code>Offline Mode</code>: Save the latest data for offline viewing.
-- Integrate animations for a smoother user experience.
+- 🌙 Add dark mode functionality for better usability at night.
+- 🟢 <code>Offline Mode</code>: Save the latest data for offline viewing.
+- 🌀 Integrate animations for a smoother user experience.
  
 ---
 
@@ -153,6 +153,6 @@ We welcome `contributions` to **Realtime Weather and Prayer Times Application**!
 - *Device Compatibility*: The app is designed to be responsive and works best on modern browsers. It is recommended to test on different devices for optimal performance.
 - *Timezone Settings*: Make sure to configure your timezone settings correctly to receive accurate prayer times and weather forecasts.
 - *Cache Management*: If you experience issues with data loading, try clearing your browser's cache or refreshing the page.
-- *Feedback*: If you encounter any bugs or have suggestions for improvements, please reach out via the contact information provided in the README or through the issue tracker on GitHub.
+- 📪 `*Feedback*`: If you encounter any bugs or have suggestions for improvements,📨 `please reach out via` the contact information provided in `the README` or through the issue `tracker` on GitHub.
 
 ---
