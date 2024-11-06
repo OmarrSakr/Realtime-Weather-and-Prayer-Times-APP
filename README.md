@@ -35,31 +35,31 @@ Below are the main sections of the website:
   - Current date and time.  
   - City name and country.  
 
-<code>3. *5-Day Forecast Section* :</code>
+<code>3. *5-Day Forecast Section*:</code>
  - *Daily Forecast Cards*: Each card displays:  
   - Weather icon for each day.  
   - Expected temperature.  
   - Day and date.  
 
-<code> 4. *Today's Highlights* :</code>
+<code> 4. *Today's Highlights*:</code>
   - *Air Quality Index (AQI)*: Displays air quality readings and pollutants such as PM2.5, PM10, CO, etc.  
 - *Sunrise & Sunset Times*:  
   - Icons for sunrise and sunset with their respective times.  
 - *Additional Indicators*:  
   - Humidity, Wind Speed, Pressure, Visibility, and Feels-Like Temperature.
 
-<code> 5. *Hourly Forecast Section* </code>
+<code> 5. *Hourly Forecast Section*:</code>
  - Weather forecast by the hour (e.g., 6 AM, 9 AM, 12 PM).  
 - Each block includes:  
   - Weather icon and forecasted temperature.
 
-<code>6. *Prayer Times Section* :</code>
+<code>6. *Prayer Times Section*:</code>
 - *Today’s Date* and day.  
 - *Prayer Cards*:  
   - Includes Fajr, Dhuhr, Asr, Maghrib, and Isha prayers.  
   - Displays icons and accurate prayer times for each prayer. 
 
-<code> 7. *External Resources* :</code>
+<code> 7. *External Resources*:</code>
 - *Font Awesome Icons* for visual enhancements.  
 - *Google Fonts* for stylish typography (e.g., Roboto, Montserrat).  
 - *Weather Images* stored locally in assets/Imgs. 
