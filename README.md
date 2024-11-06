@@ -10,8 +10,8 @@
 
 - This project is a `Realtime Weather Application` that provides live weather data along with `daily prayer times`.
 - This project is a <code>Dynamic website</code>.
-- The website features a user-friendly interface and updates weather and prayer `data automatically` every day.
-Below are the main sections of the website: 
+- The website features a **user-friendly interface** and updates weather and prayer `data automatically` every day.
+- Below are the main sections of the website👇: 
 
 ---
 
