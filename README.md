@@ -147,12 +147,12 @@ We welcome `contributions` to **Realtime Weather and Prayer Times Application**!
 
 ### Important Notes 📢
 
-- This project is a Dynamic website.
--*API Keys*: Ensure that you have valid API keys for both the weather and prayer times services. You can obtain these from the respective service providers and should store them securely.
-- *Internet Connection*: This application requires a stable internet connection to fetch real-time data. Please ensure you are connected to the internet for the best experience.
-- *Device Compatibility*: The app is designed to be responsive and works best on modern browsers. It is recommended to test on different devices for optimal performance.
-- *Timezone Settings*: Make sure to configure your timezone settings correctly to receive accurate prayer times and weather forecasts.
-- *Cache Management*: If you experience issues with data loading, try clearing your browser's cache or refreshing the page.
+- This project is a `Dynamic website`.
+- **API Keys**: Ensure that you have valid API keys for both the weather and prayer times services. You can obtain these from the respective service providers and should store them securely.
+- **Internet Connection**: This application requires a stable internet connection to fetch real-time data. Please ensure you are connected to the internet for the best experience.
+- **Device Compatibility**: The app is designed to be responsive and works best on modern browsers. It is recommended to test on different devices for optimal performance.
+- **Timezone Settings**: Make sure to configure your timezone settings correctly to receive accurate prayer times and weather forecasts.
+- **Cache Management**: If you experience issues with data loading, try clearing your browser's cache or refreshing the page.
 - 📪 `*Feedback*`: If you encounter any bugs or have suggestions for improvements,📨 `please reach out via` the contact information provided in `the README` or through the issue `tracker` on GitHub.
 
 ---
