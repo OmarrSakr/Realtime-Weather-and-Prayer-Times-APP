@@ -32,6 +32,8 @@
 <br>
 
 **`Weather & Prayer Times`** is a dynamic web application built with modern web technologies (**`HTML5`**, **`CSS3`**, **`JavaScript`**) that provides real-time weather data alongside accurate daily prayer times. The app features an intuitive interface with **automatic data updates**, **location-based services**, and **comprehensive weather forecasting**.
+
+<img src="./RealtimeWeather 1.png" alt="BuySpot Store Demo" width="600">
 </div>
 
 <div align="center">
