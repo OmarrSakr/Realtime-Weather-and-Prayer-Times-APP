@@ -107,8 +107,10 @@ function createPrayerCountdown() {
         prayerContainer.insertAdjacentElement('afterend', countdownDiv);
     }
 }
+// 🟢 أسماء الصلوات
 const prayerNames = {
     Fajr: "الفجر",
+    Sunrise: "الشروق",
     Dhuhr: "الظهر",
     Asr: "العصر",
     Maghrib: "المغرب",
