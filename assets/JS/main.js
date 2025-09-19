@@ -244,14 +244,16 @@ function createQiblaCompass() {
     }
 }
 
-let currentQiblaDirection = null; // متغير عام نخزن فيه اتجاه القبلة
+let currentQiblaDirection = null; // نخزن اتجاه القبلة هنا
 
+// 🔹 الحصول على اتجاه القبلة
 function getQiblaDirection(lat, lon) {
     fetch(`https://api.aladhan.com/v1/qibla/${lat}/${lon}`)
         .then(res => res.json())
         .then(data => {
             if (data.code === 200) {
-                currentQiblaDirection = data.data.direction; // نخزن الاتجاه في المتغير
+                currentQiblaDirection = data.data.direction; // نخزن الاتجاه
+
                 const qiblaArrow = document.getElementById('qiblaArrow');
                 const qiblaDegree = document.getElementById('qiblaDegree');
                 const qiblaText = document.getElementById('qiblaText');
@@ -272,12 +274,14 @@ function getQiblaDirection(lat, lon) {
         });
 }
 
-// 🟢 نخلي الـ Event Listener مرة واحدة بس
+// 🔹 استشعار اتجاه الجهاز مرة واحدة بس
 if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function (event) {
-        if (!currentQiblaDirection) return; // لو لسه الاتجاه متجبش، متعملش حاجة
+        if (!currentQiblaDirection) return; // لو لسه الاتجاه متجبش
 
-        let compassHeading = event.alpha; // اتجاه الجهاز (0 = شمال)
+        let compassHeading = event.webkitCompassHeading || event.alpha; // دعم iOS و Android
+        if (compassHeading == null) return;
+
         let diff = currentQiblaDirection - compassHeading;
 
         // تطبيع الفرق بين -180° و +180°
@@ -296,7 +300,7 @@ if (window.DeviceOrientationEvent) {
                 facingStatus.style.color = "orange";
             }
         }
-    });
+    }, true);
 }
 
 
