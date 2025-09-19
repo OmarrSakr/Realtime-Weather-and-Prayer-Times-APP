@@ -246,7 +246,22 @@ function createQiblaCompass() {
 
 let currentQiblaDirection = null; // نخزن اتجاه القبلة هنا
 
-// 🔹 الحصول على اتجاه القبلة
+// ✅ دالة لمقارنة الاتجاه الحالي مع القبلة
+function checkQiblaAlignment(deviceHeading, qiblaDirection) {
+    let diff = Math.abs(deviceHeading - qiblaDirection);
+
+    if (diff > 180) {
+        diff = 360 - diff;
+    }
+
+    if (diff <= 5) {
+        return "✅ أنت الآن في اتجاه القبلة الصحيح";
+    } else {
+        return "↔️ عدل اتجاهك قليلاً للوصول إلى القبلة";
+    }
+}
+
+// 🔹 الحصول على اتجاه القبلة من API
 function getQiblaDirection(lat, lon) {
     fetch(`https://api.aladhan.com/v1/qibla/${lat}/${lon}`)
         .then(res => res.json())
@@ -274,34 +289,20 @@ function getQiblaDirection(lat, lon) {
         });
 }
 
-// 🔹 استشعار اتجاه الجهاز مرة واحدة بس
-if (window.DeviceOrientationEvent) {
-    window.addEventListener("deviceorientation", function (event) {
-        if (!currentQiblaDirection) return; // لو لسه الاتجاه متجبش
+// 🔹 متابعة اتجاه الجهاز (البوصلة)
+window.addEventListener("deviceorientationabsolute", function (event) {
+    if (currentQiblaDirection !== null) {
+        let deviceHeading = event.alpha; // اتجاه الجهاز
 
-        let compassHeading = event.webkitCompassHeading || event.alpha; // دعم iOS و Android
-        if (compassHeading == null) return;
+        const alignmentMessage = checkQiblaAlignment(deviceHeading, currentQiblaDirection);
 
-        let diff = currentQiblaDirection - compassHeading;
-
-        // تطبيع الفرق بين -180° و +180°
-        diff = ((diff + 540) % 360) - 180;
-
-        const facingStatus = document.getElementById('facingStatus');
-        if (facingStatus) {
-            if (Math.abs(diff) <= 15) {
-                facingStatus.textContent = "✅ You are facing Qibla (انت متوجه للقبلة)";
-                facingStatus.style.color = "green";
-            } else if (diff > 0) {
-                facingStatus.textContent = "↗️ Move a bit Right (حوّد شوية لليمين)";
-                facingStatus.style.color = "orange";
-            } else {
-                facingStatus.textContent = "↘️ Move a bit Left (حوّد شوية لليسار)";
-                facingStatus.style.color = "orange";
-            }
+        // نعرض الرسالة تحت البوصلة
+        const qiblaStatus = document.getElementById('qiblaStatus');
+        if (qiblaStatus) {
+            qiblaStatus.textContent = alignmentMessage;
         }
-    }, true);
-}
+    }
+});
 
 
 // تشغيل البوصلة عند تحميل الصفحة
@@ -716,4 +717,31 @@ window.addEventListener('beforeunload', () => {
     if (nextPrayerInterval) {
         clearInterval(nextPrayerInterval);
     }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const backToTopButton = document.getElementById("back-to-top");
+
+    // 🔹 إظهار / إخفاء الزرار حسب الـ Scroll
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) {
+            backToTopButton.classList.add("show");
+        } else {
+            backToTopButton.classList.remove("show");
+        }
+    });
+
+    // 🔹 عند الضغط عليه يرجع لفوق بسرعة مخصصة
+    backToTopButton.addEventListener("click", function () {
+        let scrollStep = -window.scrollY / 20; // كل خطوة تنقص جزء (20 = سرعة أسرع)
+        let scrollInterval = setInterval(function () {
+            if (window.scrollY !== 0) {
+                window.scrollBy(0, scrollStep);
+            } else {
+                clearInterval(scrollInterval);
+            }
+        }, 15); // كل 10ms يتحرك
+    });
 });
