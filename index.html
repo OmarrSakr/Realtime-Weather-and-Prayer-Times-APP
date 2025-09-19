@@ -5,35 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realtime Weather</title>
-
-    <!-- * Browser Icon -->
     <link rel="shortcut icon" href="./assets/Imgs/weather-icon.png">
-
-    <!-- ^========|> Montserrat Font  -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-
-    <!-- ^========|> Open Sans Font  -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-    <!-- ^ Font Awesome Library -->
     <link rel="stylesheet" href="./assets/CSS/all.min.css">
-
-    <!-- ^ Bootstrap Css File -->
-    <!-- <link rel="stylesheet" href="./assets/CSS/bootstrap.min.css"> -->
-
-    <!-- ^ Main Css File -->
-    <link rel=" stylesheet" href="./assets/CSS/stylel.css">
-
+    <link rel="stylesheet" href="./assets/CSS/stylel.css">
 </head>
 
 <body>
-
     <div class="container">
         <div class="header">
-            <h2>Weather <img src="./assets/Imgs/Sunrise.png" alt=""></h2>
+            <h2>Weather <img src="./assets/Imgs/Sunrise.png" alt="Sunrise Icon"></h2>
             <div class="weather-input">
                 <input type="text" name="city" id="city_input" placeholder="Enter city name" autocomplete="off">
                 <button type="button" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
@@ -43,7 +27,7 @@
         </div>
         <div class="weather-data">
             <div class="weather-left">
-                <div class="card">
+                <div class="card" id="current-weather-card">
                     <div class="current-weather">
                         <div class="details">
                             <p>Now</p>
@@ -51,7 +35,7 @@
                             <p>_____</p>
                         </div>
                         <div class="weather-icon">
-                            <img src="./assets/Imgs/cloudy128.png" alt="">
+                            <img src="./assets/Imgs/cloudy128.png" alt="Weather Icon">
                         </div>
                     </div>
                     <hr>
@@ -61,48 +45,17 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h2>5 days Forecast</h2>
+                    <h2>5 Days Forecast</h2>
                     <div class="day-forecast">
                         <div class="forecast-item">
                             <div class="icon-wrapper">
-                                <img src="./assets/Imgs/sun.png" alt="">
+                                <img src="./assets/Imgs/sun.png" alt="Sun Icon">
                                 <span>____&deg;C</span>
                             </div>
                             <p>____</p>
                             <p>____</p>
                         </div>
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Imgs/weather-app.png" alt="">
-                                <span>____&deg;C</span>
-                            </div>
-                            <p>____</p>
-                            <p>____</p>
-                        </div>
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Imgs/cloudy _rain.png" alt="">
-                                <span>____&deg;C</span>
-                            </div>
-                            <p>____</p>
-                            <p>____</p>
-                        </div>
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Imgs/raining.png" alt="">
-                                <span>____&deg;C</span>
-                            </div>
-                            <p>____</p>
-                            <p>____</p>
-                        </div>
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Imgs/clouds.png" alt="">
-                                <span>____&deg;C</span>
-                            </div>
-                            <p>____</p>
-                            <p>____</p>
-                        </div>
+                        <!-- Repeat forecast-item for other days -->
                     </div>
                 </div>
             </div>
@@ -116,7 +69,6 @@
                         </div>
                         <div class="air-indices">
                             <i class="fa-solid fa-wind"></i>
-                            <!-- <img src="./assets/Imgs/wind64px.png" alt=""> -->
                             <div class="item">
                                 <p>PM2.5</p>
                                 <h2>___</h2>
@@ -158,7 +110,7 @@
                         <div class="sunrise-sunset">
                             <div class="item">
                                 <div class="icon">
-                                    <img src="./assets/Imgs/sunrise (1).png" alt="sunrise">
+                                    <img src="./assets/Imgs/sunrise (1).png" alt="Sunrise Icon">
                                 </div>
                                 <div>
                                     <p>Sunrise</p>
@@ -167,7 +119,7 @@
                             </div>
                             <div class="item">
                                 <div class="icon">
-                                    <img src="./assets/Imgs/sunset (1).png" alt="sunset">
+                                    <img src="./assets/Imgs/sunset_1.png" alt="Sunset Icon">
                                 </div>
                                 <div>
                                     <p>Sunset</p>
@@ -175,7 +127,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="card">
                         <div class="card-head">
@@ -183,10 +134,8 @@
                         </div>
                         <div class="card-item">
                             <i class="fa-solid fa-droplet"></i>
-                            <!-- <img src="./assets/Imgs/droplet.png" alt=""> -->
                             <h2 id="humidityVal">__%</h2>
                         </div>
-
                     </div>
                     <div class="card">
                         <div class="card-head">
@@ -194,7 +143,6 @@
                         </div>
                         <div class="card-item">
                             <i class="fa-regular fa-compass"></i>
-                            <!-- <img src="./assets/Imgs/compass32px.png" alt=""> -->
                             <h2 id="pressureVal">__hPa</h2>
                         </div>
                     </div>
@@ -204,18 +152,16 @@
                         </div>
                         <div class="card-item">
                             <i class="fa-regular fa-eye"></i>
-                            <!-- <img src="./assets/Imgs/eye-scanner32px.png" alt=""> -->
                             <h2 id="visibilityVal">__Km</h2>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-head">
-                            <p>Wind Spreed</p>
+                            <p>Wind Speed</p>
                         </div>
                         <div class="card-item">
                             <i class="fa-solid fa-location-arrow"></i>
-                            <!-- <img src="./assets/Imgs/location-arrow32.png" alt=""> -->
-                            <h2 id="windSpreedVal">__m/s</h2>
+                            <h2 id="windSpeedVal">__m/s</h2>
                         </div>
                     </div>
                     <div class="card">
@@ -224,111 +170,66 @@
                         </div>
                         <div class="card-item">
                             <i class="fa-solid fa-temperature-full"></i>
-                            <!-- <img src="./assets/Imgs/temperature32.png" alt=""> -->
                             <h2 id="feelsVal">__&deg;C</h2>
                         </div>
                     </div>
                 </div>
                 <h2>Today at</h2>
                 <div class="hourly-forecast">
-                    <div class="card">
-                        <p>6 AM</p>
-                        <img src="./assets/Imgs/dawn6AM.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>9 AM</p>
-                        <img src="./assets/Imgs/Asr.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>12 AM</p>
-                        <img src="./assets/Imgs/Dhuhr.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>3 PM</p>
-                        <img src="./assets/Imgs/sun3Pm.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>6 PM</p>
-                        <img src="./assets/Imgs/sunset (1).png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>9 PM</p>
-                        <img src="./assets/Imgs/Isha.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>12 AM</p>
-                        <img src="./assets/Imgs/rain12Am.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
-                    <div class="card">
-                        <p>3 AM</p>
-                        <img src="./assets/Imgs/Fajr.png" alt="">
-                        <p>__&deg;C</p>
-                    </div>
+                    <!-- Hourly forecast cards -->
                 </div>
                 <div class="prayer-container">
-                    <h2>Daily Prayer <img src="./assets/Imgs/praying.png" alt="pray "></h2>
-                    <div class="dayOfPray">
-                        <strong>xxxx-xx-xx day</strong>
-                    </div>
+                    <h2>Daily Prayer <img src="./assets/Imgs/praying.png" alt="Praying Icon"></h2>
+                    <div class="dayOfPray"><strong>xxxx-xx-xx day</strong></div>
                 </div>
-                <div class="timing-prayer">
-                    <div class="card">
-                        <p>Fajr-الفجر</p>
-                        <img src="./assets/Imgs/Fajr.png" alt="">
-                        <p class="PrayTime">___</p>
+                <div class="next-prayer-section">
+                    <div class="next-prayer-card">
+                        <p class="prayer-name">Next Prayer</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/praying.png" alt="Next Prayer Icon"></div>
+                        <p class="prayer-time"><span id="nextPrayerName">___</span> at <span
+                                id="nextPrayerTime">___</span></p>
                     </div>
-                    <div class="card">
-                        <p>Sobh-الصبح</p>
-                        <img src="./assets/Imgs/Sunrise.png" alt="">
-                        <p class="PrayTime">___</p>
+                    <div id="prayer-countdown" class="prayer-countdown"></div>
+                </div>
+                <div class="timing-prayer prayers-grid">
+                    <div class="card prayer-card">
+                        <p class="prayer-name">Fajr - الفجر</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/Fajr.png" alt="Fajr Prayer Icon"></div>
+                        <p class="prayer-time PrayTime">___</p>
                     </div>
-                    <div class="card">
-                        <p>Dhohr-الظهر</p>
-                        <img src="./assets/Imgs/sun3Pm.png" alt="">
-                        <p class="PrayTime">___</p>
+                    <div class="card prayer-card">
+                        <p class="prayer-name">Sunrise - الشروق</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/Sunrise.png" alt="Sunrise Icon"></div>
+                        <p class="prayer-time PrayTime">___</p>
                     </div>
-                    <div class="card">
-                        <p>Asr-العصر</p>
-                        <img src="./assets/Imgs/Asr.png" alt="">
-                        <p class="PrayTime">___</p>
+                    <div class="card prayer-card">
+                        <p class="prayer-name">Dhuhr - الظهر</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/sun3Pm.png" alt="Dhuhr Prayer Icon"></div>
+                        <p class="prayer-time PrayTime">___</p>
                     </div>
-                    <div class="card">
-                        <p>Maghreb-المغرب</p>
-                        <img src="./assets/Imgs/sunset (1).png" alt="">
-                        <p class="PrayTime">___</p>
+                    <div class="card prayer-card">
+                        <p class="prayer-name">Asr - العصر</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/Asr.png" alt="Asr Prayer Icon"></div>
+                        <p class="prayer-time PrayTime">___</p>
                     </div>
-                    <div class="card">
-                        <p>Isha-العشاء</p>
-                        <img src="./assets/Imgs/Isha.png" alt="">
-                        <p class="PrayTime">___</p>
+                    <div class="card prayer-card">
+                        <p class="prayer-name">Maghrib - المغرب</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/Sunset.png" alt="Maghrib Prayer Icon">
+                        </div>
+                        <p class="prayer-time PrayTime">___</p>
+                    </div>
+                    <div class="card prayer-card">
+                        <p class="prayer-name">Isha - العشاء</p>
+                        <div class="prayer-icon"><img src="./assets/Imgs/Midnight.png" alt="Isha Prayer Icon"></div>
+                        <p class="prayer-time PrayTime">___</p>
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
 
-
-
-
-
-
-
-
-
-        <!-- & Bootstrap Js File -->
-        <script src="./assets/JS/bootstrap.bundle.min.js" defer></script>
-        <!-- & Main Js File -->
-        <script src="./assets/JS/main.js" defer></script>
-        <!-- & Moment Library for Calculating the time in (sunrise and sunset) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="./assets/JS/main.js" defer></script>
 </body>
 
 </html>

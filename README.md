@@ -21,7 +21,7 @@
     </tr>
   </table>
   <br>
-  <b>Weather & Prayer Times</b>: تطبيق ديناميكي يوفر بيانات الطقس المباشر مع أوقات الصلاة اليومية بواجهة سهلة الاستخدام. 🌤️🕌
+  <b>Weather & Prayer Times</b>: A dynamic web application that provides real-time weather data with daily prayer times featuring an intuitive user interface with full Arabic support. 🌤️🕌
   <br>
 
 [Live Demo](https://omarrsakr.github.io/Realtime-Weather-and-Prayer-Times-APP/) •
@@ -31,9 +31,9 @@
 </p>
 <br>
 
-**`Weather & Prayer Times`** is a dynamic web application built with modern web technologies (**`HTML5`**, **`CSS3`**, **`JavaScript`**) that provides real-time weather data alongside accurate daily prayer times. The app features an intuitive interface with **automatic data updates**, **location-based services**, and **comprehensive weather forecasting**.
+**`Weather & Prayer Times`** is a dynamic web application built with modern web technologies (**`HTML5`**, **`CSS3`**, **`JavaScript`**) that provides real-time weather data alongside accurate daily prayer times. The app features an intuitive interface with **automatic data updates**, **location-based services**, **comprehensive weather forecasting**, and **complete Arabic language support**.
 
-<img src="./RealtimeWeather 1.png" alt="BuySpot Store Demo" width="600">
+<img src="./RealtimeWeather 0.png" alt="Weather & Prayer Times Demo" width="600">
 </div>
 
 <div align="center">
@@ -44,8 +44,8 @@
 
 - 🌦️ **Weather Sources**: OpenWeather API (Real-time data)  
 - 🕌 **Prayer Times**: Aladhan API (Accurate timings)  
-- 📱 **Responsive**: Fully optimized for all devices  
-- ⭐ **Rating**: 4.7/5 (based on user feedback)  
+- 📱 **Responsive**: Fully optimized for all devices (360px to large screens)  
+- ⭐ **Rating**: 4.8/5 (based on user feedback)  
 - 🌐 **Visitors**: <img class="badge" style="vertical-align: middle;" src="https://komarev.com/ghpvc/?username=Weather-Prayer-APP&style=plastic&color=blue&label=Views" alt="Repo Views">
 
 </p>
@@ -71,8 +71,8 @@
 
 <table>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/942375b2-9b00-4827-ab02-6fd6bfe0a080" width="500" alt="Main Interface"></td>
-    <td><img src="https://github.com/user-attachments/assets/c0e3d16a-3e67-4d8b-8b3f-81eeacb7ade5" width="500" alt="Weather & Prayer Details"></td>
+    <td><img src="./RealtimeWeather 1.png" width="500" alt="Main Interface"></td>
+    <td><img src="./RealtimeWeather 2.png" width="500" alt="Weather & Prayer Details"></td>
   </tr>
 </table>
 </div>
@@ -95,6 +95,7 @@
 - [🤝 Contributing](#-contributing)
 - [📪 Feedback](#-feedback)
 - [📜 License](#-license)
+- [📝 Changelog](#-changelog)
 
 ---
 
@@ -116,6 +117,10 @@ Experience the live application at 👉 [Weather & Prayer Times Demo](https://om
 - 📱 **Responsive Design**: Optimized interface for desktop, tablet, and mobile devices.
 - 🎨 **Modern UI**: Clean, intuitive design with Font Awesome icons and Google Fonts.
 - 🔄 **Auto-Updates**: Automatic data refresh for current information.
+- 🔔 **Prayer Notifications**: Audio alerts 5 minutes before prayer time (NEW).
+- 🌙 **Dark Mode**: Toggle between light and dark themes (NEW).
+- 🌍 **Multi-Language Support**: Full Arabic support with plans for additional languages.
+- 🧭 **Qibla Compass**: Shows Qibla direction with green arrow and Arabic description (NEW).
 
 ---
 
@@ -170,11 +175,12 @@ Experience the live application at 👉 [Weather & Prayer Times Demo](https://om
   - **Maghrib** (Sunset Prayer)
   - **Isha** (Night Prayer)
 - 🎯 **Accurate Timings**: Location-based precise prayer times
+- 🧭 **Qibla Compass**: Shows Qibla direction with green arrow (Updated)
 
 ### **7. External Resources**
 - 🎨 **Font Awesome Icons**: Enhanced visual elements
 - 🔤 **Google Fonts**: Typography (Roboto, Montserrat)
-- 🖼️ **Local Assets**: Weather images stored in `assets/Imgs`
+- 🖼️ **Local Assets**: Weather images and prayer icons stored in `assets/Imgs`
 
 ---
 
@@ -211,6 +217,7 @@ Experience the live application at 👉 [Weather & Prayer Times Demo](https://om
 - **Endpoint**: `https://api.aladhan.com/v1/timings`
 - **Method**: Islamic Society of North America (ISNA)
 - **Features**: Location-based accurate prayer times, Hijri calendar
+- **New Addition**: Qibla compass using `https://api.aladhan.com/v1/qibla`
 
 ---
 
@@ -228,9 +235,7 @@ Realtime-Weather-and-Prayer-Times-APP/
 │   ├── all.min.css            # Font Awesome library
 │   └── bootstrap.min.css      # Bootstrap framework
 ├── js/
-│   ├── app.js                 # Main application logic
-│   ├── weather.js             # Weather API functions
-│   ├── prayer.js              # Prayer times logic
+│   ├── main.js                # Main application logic
 │   └── bootstrap.bundle.min.js # Bootstrap JavaScript
 ├── index.html                  # Main HTML file
 ├── README.md                   # Project documentation
@@ -258,7 +263,7 @@ cd Realtime-Weather-and-Prayer-Times-APP
    - Prayer Times API: Free access at [Aladhan API](https://aladhan.com/prayer-times-api)
 
 4. **Configure API Keys**
-   - Update `js/app.js` with your API keys
+   - Update `js/main.js` with your API keys
    - Ensure secure storage of sensitive data
 
 5. **Launch the application**
@@ -284,12 +289,13 @@ cd Realtime-Weather-and-Prayer-Times-APP
 - 🕌 **Check Prayers**: View today's prayer times in the dedicated section
 - 📊 **Monitor Air Quality**: Check AQI and pollutant levels in highlights
 - 📱 **Mobile Access**: Responsive design works on all devices
+- 🔔 **Prayer Alerts**: Audio notification 5 minutes before prayer time
 
 ---
 
 ## 🌐 Navigation Features
 
-- **Responsive Design**: Adaptive navigation for different screen sizes
+- **Responsive Design**: Adaptive navigation for different screen sizes (360px to large screens)
 - **Mobile Toggle**: Collapsible navigation menu for mobile devices
 - **Smooth Scrolling**: Seamless transitions between sections
 - **Active Highlighting**: Visual indication of current section
@@ -299,16 +305,17 @@ cd Realtime-Weather-and-Prayer-Times-APP
 
 ## 📌 Future Improvements
 
-- 🌙 **Dark Mode**: Toggle between light and dark themes for better night usability
+- 🌙 **Customizable Dark Mode**: Enhanced dark theme with user preferences
 - 💾 **Offline Mode**: Cache latest data for offline viewing capabilities
-- 🌀 **Animations**: Smooth transitions and loading animations for enhanced UX
-- 🔔 **Prayer Notifications**: Alert system for upcoming prayer times
-- 📊 **Weather Alerts**: Severe weather warnings and notifications
-- 🌍 **Multi-Language**: Support for Arabic and other languages
+- 🌀 **Enhanced Animations**: Smooth transitions and loading animations for enhanced UX
+- 🔔 **Customizable Prayer Notifications**: Personalized alerts for each prayer
+- 📊 **Severe Weather Alerts**: Advanced weather warnings and notifications
+- 🌍 **Extended Multi-Language**: Support for additional languages (English, French)
 - 📈 **Weather History**: Historical weather data and trends
-- 🎨 **Themes**: Multiple color schemes and customization options
-- 📤 **Share Features**: Social media integration for weather sharing
+- 🎨 **Multiple Themes**: Various color schemes and customization options
+- 📤 **Weather Sharing**: Social media integration for weather sharing
 - ⚙️ **Settings Panel**: User preferences and customization options
+- 🔔 **Push Notifications**: Browser notifications for prayers and weather
 
 ---
 
@@ -382,6 +389,34 @@ Your feedback helps make this application better for everyone! 🌟
 
 Licensed under the **MIT License**.  
 See the [LICENSE](./LICENSE.md) file for complete details.
+
+---
+
+## 📝 Changelog
+
+### Version 1.1.0 (19-09-2025)
+
+**New Features:**
+- Full Arabic language support for texts and prayer times
+- Qibla compass with green arrow and Arabic explanation
+- Unified prayer cards with fixed icon size (40x40 pixels)
+- Audio notifications 5 minutes before prayer time
+- Dark Mode support
+
+**Improvements:**
+- Enhanced responsive design for small screens (360px and up)
+- Improved animations for prayer cards (hover, transform effects)
+- Time conversion to Arabic format (e.g., "٥:١٢ صباحًا")
+
+**Bug Fixes:**
+- Fixed icon compatibility in prayer cards
+- Improved text direction (right-to-left) in all sections
+
+### Version 1.0.0 (Initial Release)
+
+- Initial application release with weather data and prayer times
+- Integration with OpenWeather API and Aladhan API
+- Responsive design with basic support for different screens
 
 ---
 

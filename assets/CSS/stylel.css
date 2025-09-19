@@ -10,9 +10,7 @@
     --aqi-3: #ffca28;
     --aqi-4: #ff7043;
     --aqi-5: #ef5350;
-
 }
-
 
 body {
     overflow-x: hidden;
@@ -20,6 +18,7 @@ body {
     background-color: var(--bg-mainColor);
     color: #fff;
     padding: 0 15px;
+    font-family: "Montserrat", sans-serif;
 }
 
 h1,
@@ -38,9 +37,7 @@ a,
 p {
     font-family: "Montserrat", sans-serif;
     color: var(--bg-paragraph);
-    font-weight: 500;
     font-size: 14px;
-
 }
 
 * {
@@ -58,10 +55,6 @@ a {
     text-decoration: none;
 }
 
-/* .card {
-    box-shadow: 2 2 0 1px rgba(0, 0, 0, 0.2);
-} */
-
 .header {
     position: sticky;
     top: 0;
@@ -70,58 +63,66 @@ a {
     align-items: center;
     margin-bottom: 10px;
     padding: 15px 0;
-    background-color: rgba(17, 16, 21, 1);
+    background-color: var(--bg-mainColor);
+    z-index: 1000;
+}
 
-    & h2 {
-        font-weight: bold;
-        font-size: 600;
-        right: 30%;
-        color: var(--bg-mainBgColor);
-        padding: 5px;
-        /* border: 2px solid var(--aqi-1); */
-        background-color: var(--bg-mainColor);
-        border-radius: 5px;
-    }
+.header h2 {
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--bg-mainBgColor);
+    padding: 5px;
+    background-color: var(--bg-mainColor);
+    border-radius: 5px;
+}
 
-    & #city_input {
-        background-color: var(--bg-SecondColor);
-        border: none;
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 25px;
-        color: #fff;
+.header #city_input {
+    background-color: var(--bg-SecondColor);
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 25px;
+    color: #fff;
+}
 
-        &:focus {
-            outline: 1px solid var(--bg-mainBgColor);
+.header #city_input:focus {
+    outline: 1px solid var(--bg-mainBgColor);
+}
 
-        }
-    }
+.header #searchBtn {
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 25px;
+    color: #000;
+    /* background-color: var(--bg-mainBgColor); */
+    transition: all 0.3s ease;
+}
 
-    & #searchBtn {
-        cursor: pointer;
-        border: none;
-        font-size: 16px;
-        padding: 12px;
-        border-radius: 25px;
-        /* background-color: #fff; */
-    }
 
+.header #locationBtn {
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 25px;
+    color: #000;
+    background-color: var(--bg-mainBgColor);
+    transition: all 0.3s ease;
+}
 
-    & #locationBtn {
-        cursor: pointer;
-        border: none;
-        font-size: 16px;
-        padding: 12px;
-        border-radius: 25px;
-        background-color: var(--bg-mainBgColor);
-        /* background-color: #37AFE1 !important; */
-        /* background-color: #ea6e4b; */
-    }
+.header #searchBtn:hover,
+.header #locationBtn:hover {
+    background-color: #f09b1c;
+    transform: scale(1.05);
+}
 
-    & #locationBtn:hover {
-        background-color: #f09b1c !important;
-
-    }
+.header #searchBtn:disabled,
+.header #locationBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .card {
@@ -129,468 +130,791 @@ a {
     padding: 15px;
     border-radius: 15px;
     margin-bottom: 15px;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
 
-    & p {
-        margin: 0px 0px 7px;
-    }
+.card:nth-child(1) {
+    animation-delay: 0.1s;
+}
 
-    & h2 {
-        margin: 5px 0px 5px;
-        font-weight: 500;
+.card:nth-child(2) {
+    animation-delay: 0.2s;
+}
 
+.card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.current-weather {
+.card p {
+    margin: 0 0 7px;
+}
 
-    .details {
-        & p:nth-child(1) {
-            font-size: 14px;
-            font-weight: bold;
-            color: #FFFFFF;
-            border: 1px solid #181C14;
-            background-color: #000;
-            width: 50px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-        }
+.card h2 {
+    margin: 5px 0;
+    font-weight: 500;
+}
 
-        & h2 {
-            font-size: 55px;
-            font-weight: bold;
-            /* color: #fff; */
-            color: #000 !important;
-        }
+.current-weather .details p:nth-child(1) {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border: 1px solid #181C14;
+    background-color: #000;
+    width: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
 
-        & p:nth-child(3) {
-            font-size: 14px;
-            font-weight: bold;
-            color: #000 !important;
+.current-weather .details h2 {
+    font-size: 55px;
+    font-weight: bold;
+    color: #000;
+}
 
-        }
-
-    }
+.current-weather .details p:nth-child(3) {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
 }
 
 .weather-data {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
+}
 
-    & .weather-left {
-        grid-column: span 1;
+.weather-data .weather-left {
+    grid-column: span 1;
+}
 
-        & .card:nth-of-type(1) {
-            background-color: var(--bg-mainBgColor) !important;
-            color: #000 !important;
-        }
+.weather-data .weather-left .card:nth-of-type(1) {
+    background-color: var(--bg-mainBgColor);
+    color: #000;
+}
 
-        & .current-weather {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.weather-data .weather-left .current-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        & .card-footer {
-            margin-top: 7px;
-            margin-bottom: 12px;
-            /* background-color: var(--bg-footerColor) !important; */
+.weather-data .weather-left .card-footer {
+    margin-top: 7px;
+    margin-bottom: 12px;
+}
 
-            & p {
-                font-size: 14px;
-                color: #000 !important;
-                font-weight: bold;
-            }
-        }
+.weather-data .weather-left .card-footer p {
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
 
-        & .forecast-item {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            place-items: center;
-            margin: 10px 0px 15px;
+.weather-data .weather-left .forecast-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    margin: 10px 0 15px;
+}
 
-            & .icon-wrapper {
-                display: flex;
-                align-items: center;
+.weather-data .weather-left .forecast-item .icon-wrapper {
+    display: flex;
+    align-items: center;
+}
 
-                & span {
+.weather-data .weather-left .forecast-item .icon-wrapper span {
+    color: #fff;
+    margin-left: 4px;
+}
 
-                    color: #fff;
-                    margin-left: 4px;
-                }
-            }
-        }
+.weather-data .weather-right {
+    grid-column: span 3;
+}
+
+.weather-data .weather-right h2 {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.weather-data .weather-right .highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
+}
+
+.weather-data .weather-right .highlights .card:nth-of-type(1),
+.weather-data .weather-right .highlights .card:nth-of-type(2) {
+    grid-column: span 2;
+}
+
+.weather-data .weather-right .highlights .card-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.weather-data .weather-right .highlights .card-head .air-index {
+    color: #000;
+    border-radius: 15px;
+    padding: 5px 10px;
+    background-color: var(--bg-mainBgColor);
+}
+
+.weather-data .weather-right .highlights .air-indices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
+.weather-data .weather-right .highlights .air-indices .fa-wind {
+    font-size: 60px;
+}
+
+.weather-data .weather-right .highlights .sunrise-sunset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.weather-data .weather-right .highlights .sunrise-sunset .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.weather-data .weather-right .highlights .sunrise-sunset .item h2 {
+    margin-top: 15px;
+}
+
+.weather-data .weather-right .highlights .card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-data .weather-right .highlights .card-item i {
+    font-size: 32px;
+}
+
+.weather-data .weather-right .hourly-forecast {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 10px;
+}
+
+.weather-data .weather-right .hourly-forecast .card {
+    text-align: center;
+}
+
+.weather-data .weather-right .hourly-forecast .card p:nth-of-type(2) {
+    color: #fff;
+}
+
+.prayer-container {
+    gap: 5px;
+    margin: 20px 0;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.prayer-container h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--bg-mainBgColor);
+}
+
+.prayer-container h2 img {
+    width: 24px;
+}
+
+.dayOfPray {
+    margin-bottom: 10px;
+    text-align: right;
+    direction: rtl;
+}
+
+.dayOfPray strong {
+    display: inline-block;
+    color: #000;
+    font-size: 16px;
+    background: linear-gradient(135deg, var(--bg-mainBgColor), #f09b1c);
+    box-shadow: 0 4px 15px rgba(255, 152, 1, 0.3);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+
+    font-size: medium;
+    border-radius: 15px;
+    padding: 5px 10px;
+
+}
+
+.dayOfPray strong:before {
+    content: "🕌";
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+.next-prayer-section {
+    margin-bottom: 20px;
+}
+
+.next-prayer-card {
+    background-color: var(--bg-mainBgColor);
+    padding: 5px 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.next-prayer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 152, 1, 0.2);
+}
+
+.next-prayer-card .prayer-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.next-prayer-card .prayer-icon img {
+    width: 45px;
+}
+
+.next-prayer-card .prayer-time {
+    font-size: 16px;
+    background-color: var(--bg-SecondColor);
+    padding: 8px 12px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.next-prayer-card .prayer-time #nextPrayerTime {
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
     }
 
-    & .weather-right {
-        grid-column: span 3;
+    50% {
+        opacity: 0.7;
+    }
 
-        & h2 {
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        & .highlights {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            column-gap: 15px;
-
-            & .card:nth-of-type(1),
-            & .card:nth-of-type(2) {
-                grid-column: span 2;
-            }
-
-            & .card-head {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 10px;
-
-                & .air-index {
-                    color: #000;
-                    border-radius: 15px;
-                    padding: 5px 10px;
-                    background-color: var(--bg-mainBgColor);
-                }
-
-            }
-
-            & .air-indices {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                place-items: center;
-
-                & .fa-wind {
-                    font-size: 60px;
-
-                }
-            }
-
-            & .sunrise-sunset {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-
-                & .item {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gaP: 10px;
-
-                    & h2 {
-                        margin-top: 15px;
-                    }
-                }
-            }
-
-            & .card-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                & i {
-                    font-size: 32px;
-                }
-            }
-        }
-
-        & .hourly-forecast {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            column-gap: 10px;
-
-            & .card {
-                text-align: center;
-
-                & p:nth-of-type(2) {
-                    color: #fff;
-                }
-            }
-
-        }
-
-        .prayer-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        h2+.dayOfPray strong {
-            color: #000;
-            font-size: medium;
-            border-radius: 15px;
-            padding: 5px 10px;
-            background-color: var(--bg-mainBgColor);
-        }
-
-        & .timing-prayer {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            column-gap: 10px;
-
-            & .card {
-                text-align: center;
-                margin-top: 7px;
-                ;
-
-                & p:nth-of-type(2) {
-                    color: #fff;
-                }
-            }
-
-        }
+    100% {
+        opacity: 1;
     }
 }
 
-@media (max-width:1140px) {
+.prayer-countdown {
+    background-color: var(--bg-SecondColor);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+    direction: rtl;
+}
+
+.prayer-countdown .countdown-timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--bg-mainBgColor);
+    margin: 10px 0px;
+}
+
+.prayer-countdown .next-prayer-name,
+.prayer-countdown .next-prayer-time {
+    font-size: 16px;
+    color: #fff;
+}
+
+.timing-prayer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.prayer-card {
+    background-color: var(--bg-SecondColor);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 140px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    direction: rtl;
+}
+
+.prayer-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 152, 1, 0.1), transparent);
+    transition: transform 0.6s ease;
+    transform: rotate(45deg) translate(-100%, -100%);
+}
+
+.prayer-card:hover::before {
+    transform: rotate(45deg) translate(100%, 100%);
+}
+
+.prayer-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(255, 152, 1, 0.3);
+    border-color: var(--bg-mainBgColor);
+}
+
+.prayer-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--bg-mainBgColor);
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.prayer-icon {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.prayer-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: brightness(1.2);
+}
+
+.prayer-time {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--bg-mainColor);
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-top: 8px;
+    white-space: nowrap;
+    border: 1px solid var(--bg-mainBgColor);
+}
+
+.qibla-section {
+    background-color: var(--bg-SecondColor);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    direction: rtl;
+}
+
+.qibla-section h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--bg-mainBgColor);
+}
+
+.qibla-compass {
+    width: 170px;
+    height: 170px;
+    border: 2px solid var(--bg-mainBgColor);
+    border-radius: 50%;
+    position: relative;
+    margin: 15px auto;
+    background: radial-gradient(circle, var(--bg-SecondColor), var(--bg-mainColor));
+}
+
+.compass-directions {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--bg-mainBgColor);
+}
+
+
+
+.qibla-compass {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border: 3px solid #444;
+    border-radius: 50%;
+    background: #f9f9f9;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.compass-directions {
+    position: absolute;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+.compass-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 50px;
+    background: linear-gradient(to top, #e74c3c, var(--bg-mainBgColor));
+    transform-origin: bottom center;
+    transform: translate(-50%, -100%);
+    transition: transform 0.5s ease;
+}
+
+.qibla-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 50px;
+    background: #2ECC71;
+    transform-origin: bottom center;
+    transform: translate(-50%, -100%);
+    border: 1px solid #fff;
+    transition: transform 0.5s ease;
+}
+
+.compass-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--bg-mainBgColor);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.qibla-degree {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--bg-mainBgColor);
+}
+
+.qibla-info p {
+    font-size: 12px;
+}
+
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: linear-gradient(135deg, #ff4757, #ff3838);
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff;
+    border: 2px solid #ff6b7a;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.retry-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.prayer-skeleton {
+    background: linear-gradient(90deg, #1B1B1D 25%, #2A2A2D 50%, #1B1B1D 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 15px;
+    height: 120px;
+    margin-bottom: 15px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@media (max-width: 1140px) {
     .weather-data {
         grid-template-columns: repeat(3, 1fr);
-
-        & .weather-right {
-            grid-column: span 2;
-
-            & .highlights {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            & .card:nth-of-type(1) {
-                grid-column: span 3;
-            }
-
-            /* & .card:nth-of-type(3) {
-                & .card-item {
-                    position: relative;
-                    top: 20%;
-                    
-                }
-            } */
-
-            & .hourly-forecast {
-                grid-template-columns: repeat(6, 1fr);
-
-                & .card:nth-of-type(1) {
-                    grid-column: span 1;
-                }
-            }
-
-            & .timing-prayer {
-                grid-template-columns: repeat(6, 1fr);
-
-                & .card:nth-of-type(1) {
-                    grid-column: span 1;
-                }
-            }
-        }
-
     }
 
-}
-
-@media (max-width:1040px) {
-    .weather-data {
-        grid-template-columns: repeat(2, 1fr);
-
-        & .weather-right {
-            /** span =>this is meaning that is element take (one place) in the your network */
-            grid-column: span 1;
-
-            & .highlights {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            & .card:nth-of-type(1) {
-                grid-column: span 2;
-            }
-
-            /* & .card:nth-of-type(3) {
-                & .card-item {
-                    position: relative;
-                    top: 0%;
-                    
-                }
-            } */
-
-            & .hourly-forecast {
-                grid-template-columns: repeat(4, 1fr);
-
-            }
-
-            & .timing-prayer {
-                grid-template-columns: repeat(4, 1fr);
-
-            }
-        }
-
+    .weather-data .weather-right {
+        grid-column: span 2;
     }
-}
 
-@media (max-width:992px) {
     .weather-data .weather-right .highlights {
-        & .card {
-            grid-column: span 2;
-        }
-
-        & .air-indices {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, 1fr);
     }
 
-}
-
-@media (max-width:850px) {
-    .weather-data {
-        grid-template-columns: 1fr;
-
-        & .weather-right .highlights {
-
-            & .card:nth-of-type(3),
-            & .card:nth-of-type(4),
-            & .card:nth-of-type(5),
-            & .card:nth-of-type(6),
-            & .card:nth-of-type(7) {
-                grid-column: span 1;
-            }
-
-            & .air-indices {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-    }
-}
-
-@media (max-width:730px) {
-    .header {
-        flex-direction: column;
-        z-index: 10;
-
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 40%;
-        }
-
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
-
-        }
-    }
-}
-
-@media (max-width:660px) {
-    .header {
-        flex-direction: column;
-        z-index: 10;
-
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 38%;
-        }
-
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
-
-        }
+    .weather-data .weather-right .highlights .card:nth-of-type(1) {
+        grid-column: span 3;
     }
 
     .weather-data .weather-right .hourly-forecast {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
     }
 
-    .weather-data .weather-right .timing-prayer {
+    .timing-prayer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width:600px) {
-    .header {
-        flex-direction: column;
-        z-index: 10;
-
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 37%;
-        }
-
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
-
-        }
+@media (max-width: 1040px) {
+    .weather-data {
+        grid-template-columns: repeat(2, 1fr);
     }
-}
 
-@media (max-width:580px) {
-    .weather-data .weather-right .highlights .air-indices {
+    .weather-data .weather-right {
+        grid-column: span 1;
+    }
+
+    .weather-data .weather-right .highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .weather-data .weather-right .highlights .card:nth-of-type(1) {
+        grid-column: span 2;
+    }
+
+    .weather-data .weather-right .hourly-forecast {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .header {
-        flex-direction: column;
-        z-index: 10;
-
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 37%;
-        }
-
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
-
-        }
-    }
-
-}
-
-@media (max-width:520px) {
-    .weather-data .weather-right .highlights {
-
-        & .card:nth-of-type(3),
-        & .card:nth-of-type(4),
-        & .card:nth-of-type(5),
-        & .card:nth-of-type(6),
-        & .card:nth-of-type(7) {
-            grid-column: span 2;
-        }
-
-        & .air-indices {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    .header {
-        flex-direction: column;
-        z-index: 10;
-
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 33%;
-        }
-
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
-
-        }
+    .timing-prayer {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width:480px) {
+@media (max-width: 992px) {
+    .weather-data .weather-right .highlights .card {
+        grid-column: span 2;
+    }
+
+    .weather-data .weather-right .highlights .air-indices {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .timing-prayer {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
+
+@media (max-width: 850px) {
+    .weather-data {
+        grid-template-columns: 1fr;
+    }
+
+    .weather-data .weather-right .highlights .card:nth-of-type(3),
+    .weather-data .weather-right .highlights .card:nth-of-type(4),
+    .weather-data .weather-right .highlights .card:nth-of-type(5),
+    .weather-data .weather-right .highlights .card:nth-of-type(6),
+    .weather-data .weather-right .highlights .card:nth-of-type(7) {
+        grid-column: span 1;
+    }
+
+    .weather-data .weather-right .highlights .air-indices {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 730px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header h2 {
+        margin-bottom: 10px;
+        position: relative;
+        right: 30%;
+    }
+
+    .header #city_input {
+        width: 100%;
+        margin-bottom: 14px;
+    }
+
+    .header #searchBtn,
+    .header #locationBtn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .timing-prayer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .prayer-card {
+        min-height: 100px;
+        padding: 10px;
+    }
+
+    .prayer-icon img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .prayer-name {
+        font-size: 13px;
+    }
+
+    .prayer-time {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+    .next-prayer-card {
+        padding: 10px;
+        min-height: 50px;
+    }
+
+    .next-prayer-card .prayer-name {
+        font-size: 15px;
+    }
+
+    .next-prayer-card .prayer-icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .next-prayer-card .prayer-time {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .next-prayer-card .prayer-time #nextPrayerTime {
+        font-size: 14px;
+    }
+
+    .qibla-compass {
+        width: 160px;
+        height: 160px;
+    }
+
+    .compass-needle,
+    .qibla-arrow {
+        height: 40px;
+    }
+
+    .compass-center {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 660px) {
+    .weather-data .weather-right .hourly-forecast {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 580px) {
+    .weather-data .weather-right .highlights .air-indices {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+
+    .weather-data .weather-right .highlights .card:nth-of-type(3),
+    .weather-data .weather-right .highlights .card:nth-of-type(4),
+    .weather-data .weather-right .highlights .card:nth-of-type(5),
+    .weather-data .weather-right .highlights .card:nth-of-type(6),
+    .weather-data .weather-right .highlights .card:nth-of-type(7) {
+        grid-column: span 2;
+    }
+
+    .weather-data .weather-right .highlights .air-indices {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 490px) {
     .weather-data .weather-right .highlights .sunrise-sunset {
         grid-template-columns: 1fr;
     }
@@ -599,64 +923,224 @@ a {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .weather-data .weather-right .timing-prayer {
+    .timing-prayer {
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
     }
 
-    .header {
-        flex-direction: column;
-        z-index: 10;
-
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 30%;
-        }
-
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
-
-        }
+    .prayer-card {
+        min-height: 80px;
+        padding: 8px;
     }
+
+    .prayer-name {
+        font-size: 12px;
+    }
+
+    .prayer-icon img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .prayer-time {
+        font-size: 10px;
+        padding: 4px 6px;
+    }
+
+    .next-prayer-card {
+        padding: 8px;
+        min-height: 45px;
+    }
+
+    .next-prayer-card .prayer-name {
+        font-size: 13px;
+    }
+
+    .next-prayer-card .prayer-icon img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .next-prayer-card .prayer-time {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+    .next-prayer-card .prayer-time #nextPrayerTime {
+        font-size: 13px;
+    }
+
+    .qibla-compass {
+        width: 140px;
+        height: 140px;
+    }
+
+    .compass-needle,
+    .qibla-arrow {
+        height: 35px;
+    }
+
+    .compass-center {
+        width: 7px;
+        height: 7px;
+    }
+}
+
+@media (max-width: 400px) {
+    .timing-prayer {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .prayer-card {
+        min-height: 70px;
+        padding: 6px 10px;
+    }
+
+    .prayer-name {
+        font-size: 14px;
+    }
+
+    .prayer-icon img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .prayer-time {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .next-prayer-card {
+        padding: 6px;
+        min-height: 40px;
+    }
+
+    .next-prayer-card .prayer-name {
+        font-size: 13px;
+    }
+
+    .next-prayer-card .prayer-icon img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .next-prayer-card .prayer-time {
+        font-size: 13px;
+        padding: 3px 6px;
+    }
+
+    .next-prayer-card .prayer-time #nextPrayerTime {
+        font-size: 13px;
+    }
+
+    .qibla-compass {
+        width: 140px;
+        height: 140px;
+    }
+
+    .compass-needle,
+    .qibla-arrow {
+        height: 30px;
+    }
+
+    .compass-center {
+        width: 6px;
+        height: 6px;
+    }
+
+    .qibla-degree {
+        font-size: 12px;
+    }
+
+    .qibla-info p {
+        font-size: 9px;
+    }
+
+    .dayOfPray strong {
+        font-size: 13px;
+    }
+
+    .dayOfPray strong:before {
+        font-size: 12px;
+    }
+
 
 }
 
-
-/* @media (max-width:450px) {
-    .weather-data .weather-right .hourly-forecast {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 360px) {
+    body {
+        padding: 0 10px;
     }
-    .weather-data .weather-right .timing-prayer {
-        grid-template-columns: repeat(2, 1fr);
+
+    .prayer-card {
+        min-height: 65px;
+        padding: 5px 8px;
     }
-} */
-@media (max-width:430px) {
-    .header {
-        flex-direction: column;
-        z-index: 10;
 
-        & h2 {
-            margin-bottom: 10px;
-            position: relative;
-            right: 30%;
-        }
+    .prayer-name {
+        font-size: 10px;
+    }
 
-        & #city_input,
-        #searchBtn,
-        #locationBtn {
-            width: 100%;
-            margin-bottom: 10px;
+    .prayer-icon img {
+        width: 20px;
+        height: 20px;
+    }
 
-        }
+    .prayer-time {
+        font-size: 8px;
+        padding: 3px 5px;
+    }
+
+    .next-prayer-card {
+        padding: 5px;
+        min-height: 35px;
+    }
+
+    .next-prayer-card .prayer-name {
+        font-size: 10px;
+    }
+
+    .next-prayer-card .prayer-icon img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .next-prayer-card .prayer-time {
+        font-size: 8px;
+        padding: 2px 5px;
+    }
+
+    .next-prayer-card .prayer-time #nextPrayerTime {
+        font-size: 10px;
+    }
+
+    .qibla-compass {
+        width: 140px;
+        height: 140px;
+    }
+
+    .compass-needle,
+    .qibla-arrow {
+        height: 25px;
+    }
+
+    .compass-center {
+        width: 5px;
+        height: 5px;
+    }
+
+    .qibla-degree {
+        font-size: 10px;
+    }
+
+    .qibla-info p {
+        font-size: 8px;
     }
 }
 
-@media (max-width:380px) {
+@media (max-width: 380px) {
     .weather-data .weather-right .highlights .air-indices {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
