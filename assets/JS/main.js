@@ -745,3 +745,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 15); // كل 10ms يتحرك
     });
 });
+const backToTopButton = document.getElementById("back-to-top");
+
+backToTopButton.addEventListener("touchend", () => {
+    backToTopButton.blur(); // يشيل التركيز بعد اللمس
+});
