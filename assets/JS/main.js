@@ -244,50 +244,23 @@ function createQiblaCompass() {
     }
 }
 
-// الحصول على اتجاه القبلة
+let currentQiblaDirection = null; // متغير عام نخزن فيه اتجاه القبلة
+
 function getQiblaDirection(lat, lon) {
     fetch(`https://api.aladhan.com/v1/qibla/${lat}/${lon}`)
         .then(res => res.json())
         .then(data => {
             if (data.code === 200) {
-                const qiblaDirection = data.data.direction;
+                currentQiblaDirection = data.data.direction; // نخزن الاتجاه في المتغير
                 const qiblaArrow = document.getElementById('qiblaArrow');
                 const qiblaDegree = document.getElementById('qiblaDegree');
                 const qiblaText = document.getElementById('qiblaText');
 
                 if (qiblaArrow && qiblaDegree && qiblaText) {
-                    qiblaArrow.style.transform = `translate(-50%, -100%) rotate(${qiblaDirection}deg)`;
-                    qiblaDegree.textContent = `${Math.round(qiblaDirection)}°`;
-                    qiblaText.textContent = `Qibla Direction: ${Math.round(qiblaDirection)}° (جنوب شرق)`;
+                    qiblaArrow.style.transform = `translate(-50%, -100%) rotate(${currentQiblaDirection}deg)`;
+                    qiblaDegree.textContent = `${Math.round(currentQiblaDirection)}°`;
+                    qiblaText.textContent = `Qibla Direction: ${Math.round(currentQiblaDirection)}° (جنوب شرق)`;
                 }
-
-                // استشعار اتجاه الجهاز
-                if (window.DeviceOrientationEvent) {
-                    window.addEventListener("deviceorientation", function (event) {
-                        let compassHeading = event.alpha; // اتجاه الجهاز
-                        let difference = Math.abs(compassHeading - qiblaDirection);
-
-                        // لو الفرق كبير جداً (مثلاً 180°) نصحح الحساب عشان مايبقاش مضلل
-                        if (difference > 180) {
-                            difference = 360 - difference;
-                        }
-
-                        const facingStatus = document.getElementById('facingStatus');
-                        if (facingStatus) {
-                            if (difference <= 15) {
-                                facingStatus.textContent = "✅ You are facing Qibla (انت متوجه للقبلة)";
-                                facingStatus.style.color = "green";
-                            } else if (compassHeading > qiblaDirection) {
-                                facingStatus.textContent = "↘️ Move a bit Left (حوّد شوية لليسار)";
-                                facingStatus.style.color = "orange";
-                            } else {
-                                facingStatus.textContent = "↗️ Move a bit Right (حوّد شوية لليمين)";
-                                facingStatus.style.color = "orange";
-                            }
-                        }
-                    });
-                }
-
             }
         })
         .catch(error => {
@@ -298,6 +271,34 @@ function getQiblaDirection(lat, lon) {
             }
         });
 }
+
+// 🟢 نخلي الـ Event Listener مرة واحدة بس
+if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", function (event) {
+        if (!currentQiblaDirection) return; // لو لسه الاتجاه متجبش، متعملش حاجة
+
+        let compassHeading = event.alpha; // اتجاه الجهاز (0 = شمال)
+        let diff = currentQiblaDirection - compassHeading;
+
+        // تطبيع الفرق بين -180° و +180°
+        diff = ((diff + 540) % 360) - 180;
+
+        const facingStatus = document.getElementById('facingStatus');
+        if (facingStatus) {
+            if (Math.abs(diff) <= 15) {
+                facingStatus.textContent = "✅ You are facing Qibla (انت متوجه للقبلة)";
+                facingStatus.style.color = "green";
+            } else if (diff > 0) {
+                facingStatus.textContent = "↗️ Move a bit Right (حوّد شوية لليمين)";
+                facingStatus.style.color = "orange";
+            } else {
+                facingStatus.textContent = "↘️ Move a bit Left (حوّد شوية لليسار)";
+                facingStatus.style.color = "orange";
+            }
+        }
+    });
+}
+
 
 // تشغيل البوصلة عند تحميل الصفحة
 createQiblaCompass();
