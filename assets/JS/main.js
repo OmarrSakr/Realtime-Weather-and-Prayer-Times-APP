@@ -157,13 +157,25 @@ function updatePrayerCountdown() {
     }
 }
 
+// إعداد اللغة العامة (اختار "ar" أو "en")
+let appLang = "ar";
+
 // تحويل الوقت لصيغة 12 ساعة
 function convertTo12Hour(timeStr) {
     let [hour, minute] = timeStr.split(':').map(Number);
-    let period = hour >= 12 ? "PM" : "AM";
+    let isPM = hour >= 12;
     hour = hour % 12 || 12;
+
+    let period;
+    if (appLang === "ar") {
+        period = isPM ? "مساءً" : "صباحًا";
+    } else {
+        period = isPM ? "PM" : "AM";
+    }
+
     return `${hour}:${minute < 10 ? '0' + minute : minute} ${period}`;
 }
+
 
 // حفظ واسترجاع بيانات المدينة
 function saveSelectedCity(cityData) {
@@ -255,18 +267,27 @@ function getQiblaDirection(lat, lon) {
                         let compassHeading = event.alpha; // اتجاه الجهاز
                         let difference = Math.abs(compassHeading - qiblaDirection);
 
+                        // لو الفرق كبير جداً (مثلاً 180°) نصحح الحساب عشان مايبقاش مضلل
+                        if (difference > 180) {
+                            difference = 360 - difference;
+                        }
+
                         const facingStatus = document.getElementById('facingStatus');
                         if (facingStatus) {
-                            if (difference < 10) {
+                            if (difference <= 15) {
                                 facingStatus.textContent = "✅ You are facing Qibla (انت متوجه للقبلة)";
                                 facingStatus.style.color = "green";
+                            } else if (compassHeading > qiblaDirection) {
+                                facingStatus.textContent = "↘️ Move a bit Left (حوّد شوية لليسار)";
+                                facingStatus.style.color = "orange";
                             } else {
-                                facingStatus.textContent = "❌ Not facing Qibla (انت مش في اتجاه القبلة)";
-                                facingStatus.style.color = "red";
+                                facingStatus.textContent = "↗️ Move a bit Right (حوّد شوية لليمين)";
+                                facingStatus.style.color = "orange";
                             }
                         }
                     });
                 }
+
             }
         })
         .catch(error => {
@@ -540,19 +561,20 @@ function getWeatherDetails(name, lat, lon, country, state) {
         .then(data => {
             let hourlyForecastCard = data.list;
             hourlyForecastContainer.innerHTML = '';
+
             for (let i = 0; i <= 7; i++) {
                 let hrForecastDate = new Date(hourlyForecastCard[i].dt_txt);
-                let hr = hrForecastDate.getHours();
-                let a = hr < 12 ? 'AM' : 'PM';
-                hr = hr % 12 || 12;
+                let timeLabel = convertTo12Hour(
+                    `${hrForecastDate.getHours()}:${hrForecastDate.getMinutes()}`
+                );
 
                 hourlyForecastContainer.innerHTML += `
-                    <div class="card">
-                        <p>${hr}${a}</p>
-                        <img src="https://openweathermap.org/img/wn/${hourlyForecastCard[i].weather[0].icon}@2x.png" alt="">
-                        <p>${(hourlyForecastCard[i].main.temp - 273.15).toFixed(2)}&deg;C</p>
-                    </div>
-                `;
+            <div class="card">
+                <p>${timeLabel}</p>
+                <img src="https://openweathermap.org/img/wn/${hourlyForecastCard[i].weather[0].icon}@2x.png" alt="">
+                <p>${(hourlyForecastCard[i].main.temp - 273.15).toFixed(2)}&deg;C</p>
+            </div>
+        `;
             }
 
             let uniqueForecastDays = [];
@@ -569,16 +591,17 @@ function getWeatherDetails(name, lat, lon, country, state) {
             fiveDayForecast.forEach(forecast => {
                 let date = new Date(forecast.dt_txt);
                 fiveDayForeCastCard.innerHTML += `
-                    <div class="forecast-item">
-                        <div class="icon-wrapper">
-                            <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="">
-                            <span>${(forecast.main.temp - 273.15).toFixed(2)}&deg;C</span>
-                        </div>
-                        <p>${date.getDate()}, ${months[date.getMonth()]}</p>
-                        <p>${days[date.getDay()]}</p>
-                    </div>`;
+            <div class="forecast-item">
+                <div class="icon-wrapper">
+                    <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="">
+                    <span>${(forecast.main.temp - 273.15).toFixed(2)}&deg;C</span>
+                </div>
+                <p>${date.getDate()}, ${months[date.getMonth()]}</p>
+                <p>${days[date.getDay()]}</p>
+            </div>`;
             });
         })
+
         .catch((error) => {
             console.error(`Failed to fetch weather forecast: ${error.message}`);
             if (!fiveDayForeCastCard.innerHTML.includes('forecast-item')) {
