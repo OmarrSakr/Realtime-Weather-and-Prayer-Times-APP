@@ -1169,7 +1169,7 @@ a {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-#back-to-top:hover {
+#back-to-top:active {
     background: var(--aqi-4);
     opacity: 1;
     transform: scale(1.1);
